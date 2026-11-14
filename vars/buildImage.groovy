@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call() {
+def call(String imageName) {
     echo 'Building the Docker image'
-    sh 'docker build -t koukidevops/taskops-api:1.0 .'
+    sh "docker build -t $imageName ."
 }

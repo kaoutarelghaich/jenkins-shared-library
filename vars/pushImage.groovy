@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def call() {
+def call(imageName) {
     withCredentials ([
         usernamePassword(
             credentialsId: 'docker-hub',
@@ -9,6 +9,6 @@ def call() {
         )
     ]) {
         sh 'set +x; printf "%s" "$TOKEN" | docker login -u "$USER" --password-stdin'
-        sh 'docker push koukidevops/taskops-api:1.0'
+        sh "docker push $imageName"
     }
 }
